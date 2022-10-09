@@ -129,3 +129,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configurando constante de permissão do CORS
 CORS_ALLOW_ALL_ORIGINS = True
+
+# Configurando a leitura de numero float no JSON
+REST_FRAMEWORK = {
+    "COERCE_DECIMAL_TO_STRING": False
+}
