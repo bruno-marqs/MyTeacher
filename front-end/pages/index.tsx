@@ -1,4 +1,4 @@
-import { Box, Button, Dialog, DialogActions, Grid, TextField } from '@mui/material'
+import { Box, Button, Dialog, DialogActions, Grid, Snackbar, TextField } from '@mui/material'
 import type { NextPage } from 'next'
 import { Professor } from '../src/@types/professor'
 import Lista from '../src/components/Lista/Lista'
@@ -9,7 +9,8 @@ const Home: NextPage = () => {
     nome, setNome, 
     email, setEmail,
     professorSelecionado, setProfessorSelecionado,
-    marcarAula  } = useIndex(); 
+    marcarAula,
+    mensagem, setMensagem  } = useIndex(); 
 
   return (
     <div>
@@ -45,10 +46,16 @@ const Home: NextPage = () => {
         <DialogActions sx={{mt: 5}}>
           <Button onClick={() => setProfessorSelecionado(null)}>Cancelar</Button>
           <Button onClick={() => marcarAula()} >Marcar</Button>
-
         </DialogActions>
 
       </Dialog>
+
+      <Snackbar 
+        message={mensagem} 
+        open={mensagem.length > 0} 
+        autoHideDuration={2500}
+        onClose={() => setMensagem('')}
+      />
 
     </div>
   )
